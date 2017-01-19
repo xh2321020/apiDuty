@@ -24,10 +24,6 @@ public class OnPlanController {
 	@Autowired
 	private OnPlanManager onPlanManger;
 	
-//	@RequestMapping(value = "/Planlist", method = RequestMethod.POST)
-//	public @ResponseBody List<PlanDto> Planlist(@RequestBody PlanQueryDto plan) {
-//		return onPlanManger.findAvailablePlan(plan);
-//	}
 	//============================= 计划 =========================================
 	
 	@RequestMapping(value = "/Planlist/{id}", method = RequestMethod.GET)   //计划列表
@@ -114,5 +110,8 @@ public class OnPlanController {
 	public @ResponseBody List<PlanModifyDto> Modifyloglist(@PathVariable String id) {
 		return onPlanManger.modifyloglist(id);
 	}
-	
+	@RequestMapping(value = "/SaveModify", method = RequestMethod.POST)   //日志列表
+	public @ResponseBody PlanModifyDto savemodify(@RequestBody PlanModifyDto planmodifydto) {
+		return onPlanManger.savemodify(planmodifydto);
+	}
 }

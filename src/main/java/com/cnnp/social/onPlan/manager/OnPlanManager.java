@@ -41,11 +41,13 @@ public class OnPlanManager {
 	private JdbcTemplate jdbcTemplate;
 	@Autowired
 	private OnPlanDao onPlanDao;
+	@Autowired
 	private OnPlanDetailDao onPlanDetailDao;
+	@Autowired
 	private OnPlanDetailSubDao onPlanDetailSubDao;
+	@Autowired
 	private OnModifyInfoDao onModifyInfoDao;
-	// @Autowired
-	// private OnDutyImportDao onDutyImportDao;
+
 
 	private DozerBeanMapper mapper = new DozerBeanMapper();
 
@@ -380,13 +382,31 @@ public class OnPlanManager {
 		}
 		return modifylist;
 	}
-	public void modifylog(String username,String modifytype,String planid,String descript){
+	public void modifylog(String id,String modifytype,String planid,String descript){
 		PlanModifyInfo pmi = new PlanModifyInfo();
-		pmi.setOperatordate(new Date());
-		pmi.setOperatorid(username);//用户明？？？
-		pmi.setOperatortype(modifytype);
 		pmi.setPlanid(planid);
+		pmi.setOperatorid(id);//用户明？？？
+		pmi.setOperatorname("");
+		pmi.setOperatordate(new Date());
 		pmi.setDescription(descript);//描述
+		pmi.setOperatortype(modifytype);
 		onModifyInfoDao.save(pmi);
 	}
+	
+	public PlanModifyDto savemodify(PlanModifyDto pmf) {  //新增计划
+		if (pmf == null) { 
+			throw new NoContentException(310); // No Content Exception
+		}
+		PlanModifyInfo entity = new PlanModifyInfo();
+		mapper.map(pmf, entity);
+		
+		entity = onModifyInfoDao.save(entity);
+		if (entity == null) {
+			throw new SocialSystemException(311);// Save Exception
+		}
+		PlanModifyDto newpmf = new PlanModifyDto();
+		mapper.map(entity, newpmf);
+		return newpmf;
+	}
+	
 }

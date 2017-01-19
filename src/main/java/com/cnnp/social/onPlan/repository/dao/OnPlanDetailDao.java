@@ -8,6 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cnnp.social.onPlan.repository.entity.PlanDetail;
+import com.cnnp.social.onPlan.repository.entity.PlanInfo;
 
 
 @Transactional

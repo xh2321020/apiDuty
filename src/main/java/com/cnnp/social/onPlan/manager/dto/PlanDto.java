@@ -35,6 +35,7 @@ public class PlanDto {
 	private String scheduletype;
 	@Temporal(TemporalType.DATE)
 	private Date startdate;
+	
 	public String getId() {
 		return id;
 	}

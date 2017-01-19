@@ -11,13 +11,16 @@ public class PlanModifyInfo {
 	@Id
 	@GenericGenerator(name="idGenerator", strategy="uuid")
 	@GeneratedValue(generator="idGenerator")
+	
 	private String id;
 	private String planid;
 	private String operatorid;
+	private String operatorname;
 	@Temporal(TemporalType.DATE)
 	private Date operatordate;
 	private String description;
 	private String operatortype;
+	
 	public String getId() {
 		return id;
 	}
@@ -36,6 +39,12 @@ public class PlanModifyInfo {
 	public void setOperatorid(String operatorid) {
 		this.operatorid = operatorid;
 	}
+	public String getOperatorname() {
+		return operatorname;
+	}
+	public void setOperatorname(String operatorname) {
+		this.operatorname = operatorname;
+	}
 	public Date getOperatordate() {
 		return operatordate;
 	}
@@ -51,9 +60,10 @@ public class PlanModifyInfo {
 	public String getOperatortype() {
 		return operatortype;
 	}
-	public void setOperatortype(String string) {
-		this.operatortype = string;
+	public void setOperatortype(String operatortype) {
+		this.operatortype = operatortype;
 	}
-
+	
+	
 	
 }
