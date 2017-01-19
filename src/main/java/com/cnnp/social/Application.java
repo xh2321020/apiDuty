@@ -20,7 +20,7 @@ public class Application {
      SpringApplication.run(Application.class, args);
     	//System.out.println(new Date());
     }
-//    @Override
+//    @Override1231
 //    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 //        return application.sources(Application.class);
 //    } 
